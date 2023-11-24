@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.WelcomeScreen" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#FBC02D</item>
+    </style>
+
+    <style name="Theme.WelcomeScreen" parent="Base.Theme.WelcomeScreen" />
+
+    <style name="Text_color_night_mode">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="des_text_color">
+        <item name="android:textColor">#9D9D9D</item>
+    </style>
+
+</resources>

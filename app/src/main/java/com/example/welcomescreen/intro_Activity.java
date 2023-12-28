@@ -23,14 +23,30 @@ public class intro_Activity extends AppCompatActivity {
 
     // Array of textview
     TextView[] dots;
+    PreferenceManager preferenceManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+
+
+
         dotsLayout = findViewById(R.id.dotsLayout);
         start_button = findViewById(R.id.start_button);
+        dotsFuction(0);
+
+        preferenceManager = new PreferenceManager(this,"OB");
+
+        if (preferenceManager.isfirstTimeChecl()==1){
+            Intent intent = new Intent(intro_Activity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         List<screen_item_model> mlist = new ArrayList<>();
 
@@ -41,7 +57,12 @@ public class intro_Activity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewPager);
         welcomePageAdapter = new welcome_page_adapter(this, mlist);
-        viewPager.setAdapter(welcomePageAdapter);        // set Adapter
+        viewPager.setAdapter(welcomePageAdapter);
+
+
+
+
+               // set Adapter
 
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +75,7 @@ public class intro_Activity extends AppCompatActivity {
         });
 
         //Method for handle dots (page indicator)
-        dotsFuction(0);
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -78,8 +99,10 @@ public class intro_Activity extends AppCompatActivity {
                         if (position < 2) {
                             viewPager.setCurrentItem(position + 1, true);
                         } else {
+                            preferenceManager.setFirstTimeLaunch(1);
                             Intent intent = new Intent(intro_Activity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 });

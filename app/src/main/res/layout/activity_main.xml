@@ -16,7 +16,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_weight="1.5"
-        android:src="@drawable/welcome"></ImageView>
+        android:src="@drawable/welcome">
+
+    </ImageView>
 
 
     <LinearLayout
